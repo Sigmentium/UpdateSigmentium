@@ -1,31 +1,26 @@
+let Item;
 let Player;
 let Opponent;
-let Item;
 let click = 0;
 
 function Winner(Player, Opponent) {
-    // let Result;
     if (Player === Opponent) {
         alert('Ничья');
-        // Result = "Ничья";
     }
-    else if ((Player === 'Камень' && Opponent === 'Ножницы')||
-        (Player === 'Ножницы' && Opponent === 'Бумага')||
-        (Player === 'Бумага' && Opponent === 'Камень')) {
+    else if ((Player === 'Камень' && Opponent === 'Ножницы') ||
+             (Player === 'Ножницы' && Opponent === 'Бумага') ||
+             (Player === 'Бумага' && Opponent === 'Камень')) {
         alert('Вы выиграли!');
-        // Result = "Вы выиграли!";
     }
     else {
         alert('Вы проиграли!');
-        // Result = "Вы проиграли!";
     }
 }
 
-// Подготовка
-const names = ["Александ", "Алексей", "Игнат", "Максим", "Ашот", "Сергей", "Наталия", "Ольга", "Наиле", "Мирослав"];
-const Random = Math.floor(Math.random() * 10);
+const Names = ["Александ", "Алексей", "Игнат", "Максим", "Ашот", "Сергей", "Наталия", "Ольга", "Наиле", "Мирослав", "Денис", "Дарья", "Елисей", "Герасим", "Константин"];
+const RandomName = Math.floor(Math.random() * (14 - 0 + 1)) + 1;
 
-document.getElementById('Eminem').innerHTML = names[Random];
+document.getElementById('Eminem').innerHTML = `<H1>${Names[RandomName]}</H1>`;
 
 // Выбор игрока
 const Bitem1 = document.getElementById('B1');
