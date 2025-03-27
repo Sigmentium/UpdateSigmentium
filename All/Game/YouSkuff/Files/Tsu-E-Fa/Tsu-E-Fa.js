@@ -1,7 +1,6 @@
-let Item;
 let Player;
 let Opponent;
-let click = 0;
+let Count = 0;
 
 function Winner(Player, Opponent) {
     if (Player === Opponent) {
@@ -17,193 +16,53 @@ function Winner(Player, Opponent) {
     }
 }
 
+function Check() {
+    if (Player !== null && Opponent !== null) {
+        document.getElementById('Start').addEventListener('click', function() {
+            Winner(Player, Opponent);
+        });
+    }
+}
+
 const Names = ["Александ", "Алексей", "Игнат", "Максим", "Ашот", "Сергей", "Наталия", "Ольга", "Наиле", "Мирослав", "Денис", "Дарья", "Елисей", "Герасим", "Константин"];
 const RandomName = Math.floor(Math.random() * (14 - 0 + 1)) + 1;
 
-document.getElementById('Eminem').innerHTML = `<H1>${Names[RandomName]}</H1>`;
+document.getElementById('Player').innerHTML += `<H1>Вы</H1>`
+document.getElementById('Eminem').innerHTML += `<H1>${Names[RandomName]}</H1>`;
 
 // Выбор игрока
-const Bitem1 = document.getElementById('B1');
-document.getElementById('B1').addEventListener('click', function() {
-    alert('Отлично, вы выбрали камень');
-    Item = 1;
-
-    document.getElementById('After').innerHTML = `
-    <div class="center" id="After2">
-        <H1>Для начала, 2 раза нажмите клавишу "C"</H1>
-        <div class="center">
-            <button id="But"><H1>C</H1></button>
-        </div>
-    </div>
-    `;
-});
-const Bitem2 = document.getElementById('B2');
-document.getElementById('B2').addEventListener('click', function() {
-    alert('Отлично, вы выбрали ножницы');
-    Item = 2;
-
-    document.getElementById('After').innerHTML = `
-    <div class="center" id="After2">
-        <H1>Для начала, 2 раза нажмите клавишу "C"</H1>
-        <div class="center">
-            <button id="But"><H1>C</H1></button>
-        </div>
-    </div>
-    `;
-});
-const Bitem3 = document.getElementById('B3');
-document.getElementById('B3').addEventListener('click', function() {
-    alert('Отлично, вы выбрали бумагу');
-    Item = 3;
-
-    document.getElementById('After').innerHTML = `
-    <div class="center" id="After2">
-        <H1>Для начала, 2 раза нажмите клавишу "C"</H1>
-        <div class="center">
-            <button id="But"><H1>C</H1></button>
-        </div>
-    </div>
-    `;
+document.getElementById('Stone').addEventListener('click', function() {
+    Player = "Камень";
+    alert('Отлично! Вы выбрали камень!');
+    document.getElementById('Items').innerHTML = '<button id="Start">Начать игру</button>';
+    Check();
 });
 
-document.addEventListener('keydown', function(event) {
-    if (typeof Item === 'undefined') {
-        alert('Перед началом игры, необходимо сделать выбор');
-        return;
-    }
-    if (event.key === '1') {
-        alert('Отлично, вы выбрали камень');
-        Item = 1;
+document.getElementById('Scissors').addEventListener('click', function() {
+    Player = "Ножницы";
+    alert('Отлично! Вы выбрали ножницы!');
+    document.getElementById('Items').innerHTML = '<button id="Start">Начать игру</button>';
+    Check();
+});
 
-        document.getElementById('After').innerHTML = `
-        <div class="center" id="After2">
-            <H1>Для начала, 2 раза нажмите клавишу "C"</H1>
-            <div class="center">
-                <button id="But"><H1>C</H1></button>
-            </div>
-        </div>
-        `;
-    }
-    if (event.key === '2') {
-        alert('Отлично, вы выбрали ножницы');
-        Item = 2;
-
-        document.getElementById('After').innerHTML = `
-        <div class="center" id="After2">
-            <H1>Для начала, 2 раза нажмите клавишу "C"</H1>
-            <div class="center">
-                <button id="But"><H1>C</H1></button>
-            </div>
-        </div>
-        `;
-    }
-    if (event.key === '3') {
-        alert('Отлично, вы выбрали бумагу');
-        Item = 3;
-
-        document.getElementById('After').innerHTML = `
-        <div class="center" id="After2">
-            <H1>Для начала, 2 раза нажмите клавишу "C"</H1>
-            <div class="center">
-                <button id="But"><H1>C</H1></button>
-            </div>
-        </div>
-        `;
-    }
+document.getElementById('Paper').addEventListener('click', function() {
+    Player = "Бумага";
+    alert('Отлично! Вы выбрали бумагу!');
+    document.getElementById('Items').innerHTML = '<button id="Start">Начать игру</button>';
+    Check();
 });
 
 // Выбор противника
-const Reds = ['<img src="https://youskuff.github.io/Photo/Камень.png" class="img" width="200px" height="200px">', '<img src="https://youskuff.github.io/Photo/Ножницы.png" class="img" width="200px" height="200px">', '<img src="https://youskuff.github.io/Photo/Бумага.png" class="img" width="200px" height="200px">'];
-const RedR = Math.floor(Math.random() * 3);
+const RandomItem = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
-if (RedR === 0) {
+if (RandomItem === 1) {
     Opponent = "Камень";
 }
-if (RedR === 1) {
+else if (RandomItem === 2) {
     Opponent = "Ножницы";
 }
-if (RedR === 2) {
+else if (RandomItem === 3) {
     Opponent = "Бумага";
 }
 
-document.addEventListener('keydown', function(event) {
-    if (['C', 'c', 'С', 'с'].includes(event.key)) {
-        click++;
-
-        if (click === 2) {
-            alert('Игра начинается!');
-
-            document.getElementById('After2').innerHTML = "";
-
-            // Игрок
-            if (Item === 1) {
-                document.getElementById('Red2').innerHTML = '<img src="https://youskuff.github.io/Photo/Камень.png" class="img" width="200px" height="200px">';
-                Player = "Камень";
-            }
-            if (Item === 2) {
-                document.getElementById('Red2').innerHTML = '<img src="https://youskuff.github.io/Photo/Ножницы.png" class="img" width="200px" height="200px">';
-                Player = "Ножницы";
-            }
-            if (Item === 3) {
-                document.getElementById('Red2').innerHTML = '<img src="https://youskuff.github.io/Photo/Бумага.png" class="img" width="200px" height="200px">';
-                Player = "Бумага";
-            }
-
-            // Противник
-            if (RedR === 0) {
-                document.getElementById('Red1').innerHTML = Reds[RedR];
-            }
-            if (RedR === 1) {
-                document.getElementById('Red1').innerHTML = Reds[RedR];
-            }
-            if (RedR === 2) {
-                document.getElementById('Red1').innerHTML = Reds[RedR];
-            }
-
-            click = 0;
-
-            Winner(Player, Opponent);
-        }
-    }
-});
-
-document.addEventListener('click', function (event) {
-    if (event.target && event.target.innerText === 'C') {
-        click++;
-
-        if (click === 2) {
-            alert('Игра начинается!');
-
-            document.getElementById('After2').innerHTML = "";
-
-            // Игрок
-            if (Item === 1) {
-                document.getElementById('Red2').innerHTML = '<img src="https://youskuff.github.io/Photo/Камень.png" class="img" width="200px" height="200px">';
-                Player = "Камень";
-            }
-            if (Item === 2) {
-                document.getElementById('Red2').innerHTML = '<img src="https://youskuff.github.io/Photo/Ножницы.png" class="img" width="200px" height="200px">';
-                Player = "Ножницы";
-            }
-            if (Item === 3) {
-                document.getElementById('Red2').innerHTML = '<img src="https://youskuff.github.io/Photo/Бумага.png" class="img" width="200px" height="200px">';
-                Player = "Бумага";
-            }
-
-            // Противник
-            if (RedR === 0) {
-                document.getElementById('Red1').innerHTML = Reds[RedR];
-            }
-            if (RedR === 1) {
-                document.getElementById('Red1').innerHTML = Reds[RedR];
-            }
-            if (RedR === 2) {
-                document.getElementById('Red1').innerHTML = Reds[RedR];
-            }
-
-            click = 0;
-
-            Winner(Player, Opponent);
-        }
-    }
-});
+// Решение
