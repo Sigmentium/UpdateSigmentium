@@ -1,6 +1,5 @@
 let Player;
 let Opponent;
-let Count = 0;
 
 function Winner(Player, Opponent) {
     if (Player === Opponent) {
@@ -14,6 +13,7 @@ function Winner(Player, Opponent) {
     else {
         alert('Вы проиграли!');
     }
+    document.getElementById('All').innerHTML = `<H2>Вы - ${Player}<br>${Names[RandomName]} - ${Opponent}</H1>`;
 }
 
 function Check() {
@@ -34,21 +34,24 @@ document.getElementById('Eminem').innerHTML += `<H1>${Names[RandomName]}</H1>`;
 document.getElementById('Stone').addEventListener('click', function() {
     Player = "Камень";
     alert('Отлично! Вы выбрали камень!');
-    document.getElementById('Items').innerHTML = '<button id="Start">Начать игру</button>';
+    document.getElementById('Items').innerHTML = "";
+    document.getElementById('All').innerHTML = '<button id="Start">Начать игру</button>';
     Check();
 });
 
 document.getElementById('Scissors').addEventListener('click', function() {
     Player = "Ножницы";
     alert('Отлично! Вы выбрали ножницы!');
-    document.getElementById('Items').innerHTML = '<button id="Start">Начать игру</button>';
+    document.getElementById('Items').innerHTML = "";
+    document.getElementById('All').innerHTML = '<button id="Start">Начать игру</button>';
     Check();
 });
 
 document.getElementById('Paper').addEventListener('click', function() {
     Player = "Бумага";
     alert('Отлично! Вы выбрали бумагу!');
-    document.getElementById('Items').innerHTML = '<button id="Start">Начать игру</button>';
+    document.getElementById('Items').innerHTML = "";
+    document.getElementById('All').innerHTML = '<button id="Start">Начать игру</button>';
     Check();
 });
 
@@ -64,5 +67,3 @@ else if (RandomItem === 2) {
 else if (RandomItem === 3) {
     Opponent = "Бумага";
 }
-
-// Решение
