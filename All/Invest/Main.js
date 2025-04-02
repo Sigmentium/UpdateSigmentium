@@ -1,18 +1,13 @@
-const FIO = ["document.getElementById('FIO')", "document.getElementById('FIO1')"];
+const Data = ["document.getElementById('FIO')", "document.getElementById('Save')"];
 
 window.onload = function() {
-    if (localStorage.getItem('Name') === null) {
-        FIO[0].innerHTML = '<input type="text" id="Name" class="center" placeholder="ФИО">';
-        FIO[01].innerHTML = '<input type="text" id="Name" class="center" placeholder="ФИО">';
-    }
-    else {
-        FIO[0].innerHTML = `<H2>${localStorage.getItem('Name')}</H2>`;
-        FIO[1].innerHTML = `<H2>${localStorage.getItem('Name')}</H2>`;
-        document.getElementById('SaveButton').innerHTML = "";
+    if (localStorage.getItem('Name') !== null) {
+        Data[0].innerHTML = "";
+        Data[1].innerHTML = "";
     }
 }
 
-document.getElementById('SaveData').addEventListener('click', function() {
+document.getElementById('SaveButton').addEventListener('click', function() {
     const Name = document.getElementById('Name').value;
 
     if (Name.length === 0) {

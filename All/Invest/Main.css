@@ -3,8 +3,9 @@ html {
 }
 body {
     font-family:monospace;
-    margin:0;
+    overflow:hidden;
     height:100%;
+    margin:0;
 }
 a {
     color:black;
@@ -50,18 +51,18 @@ img {
 
 /* Column */
 #ColumnL {
+    float:left;
     color:black;
     background-color:lightseagreen;
     width:35%;
     height:100%;
-    float:left;
 }
 #ColumnR {
+    float:right;
     color:black;
     background-color:cornsilk;
     width:65%;
     height:100%;
-    float:right;
 }
 #MinL, #MinR {
     color:black;
