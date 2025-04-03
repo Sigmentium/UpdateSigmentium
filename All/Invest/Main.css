@@ -29,7 +29,7 @@ img {
 	align-items:center;
 	gap:15px;
 }
-#Name {
+#Name, #Name1 {
     color:black;
     background-color:cornsilk;
     width:300px;
@@ -38,7 +38,7 @@ img {
     border:2px solid white;
     border-radius:5px;
 }
-#SaveButton {
+#SaveButton, #SaveButton1 {
     color:black;
     background-color:cadetblue;
     width:100px;
@@ -75,4 +75,5 @@ img {
 #Adept {
     color:black;
     background-color:cornsilk;
+    margin:0;
 }
