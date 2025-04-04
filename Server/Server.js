@@ -1,6 +1,6 @@
 const http = require('http');
 
-const port = 1000;
+const port = process.env.PORT || 1000;
 
 let Data = GetData();
 
