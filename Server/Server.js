@@ -2,20 +2,6 @@ const http = require('http');
 
 const port = process.env.PORT || 1000;
 
-let Data = GetData();
-
-function SaveData(data) {
-    fs.writeFileSync('Data.json', JSON.stringify(data, null, 2), 'utf8');
-}
-
-function GetData() {
-    if (fs.existsSync('Data.json')) {
-        const data = fs.readFileSync('Data.json', 'utf8');
-        return JSON.parse(data);
-    }
-    return {};
-}
-
 function GenerateId(length) {
     let result = '';
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
